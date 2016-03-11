@@ -1,16 +1,19 @@
 development:
   adapter: postgresql
-  database: my_database_development
+  database: chipichipi
   pool: 5
-  timeout: 5000
+  username: nany
+  password: nany
 test:
   adapter: postgresql
-  database: my_database_test
+  database: chipichipi
   pool: 5
-  timeout: 5000
+  username: nany
+  password: nany
 
 production:
   adapter: postgresql
-  database: my_database_production
+  database: chipichipi
   pool: 5
-  timeout: 5000
+  username: nany
+  password: nany
