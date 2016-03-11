@@ -1,4 +1,4 @@
 class Solicitud < ActiveRecord::Base
   belongs_to :cliente
-  has_many :pedido
+  has_many :pedidos
 end

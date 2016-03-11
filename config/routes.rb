@@ -1,6 +1,28 @@
 Rails.application.routes.draw do
   devise_for :clientes, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  namespace :admin do
+    resources :clientes do
+      resources :solicituds do
+        resources :pedidos
+      end
+    end
+  end
+
+  namespace :admin do
+    resources :clientes do
+      resources :pedidos
+    end
+  end
+
+  namespace :admin do
+    resources :solicituds do
+      resources :pedidos
+    end
+  end
+
+  root 'admin/dashboard#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

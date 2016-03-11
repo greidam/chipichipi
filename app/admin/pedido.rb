@@ -3,8 +3,16 @@ ActiveAdmin.register Pedido do
   controller do
       nested_belongs_to :cliente, :solicitud, optional: true
   end
-  permit_params :name, :amount, :description, :solicitud
+  permit_params :name, :amount, :description, :solicitud_id
 
+  index do
+      selectable_column
+      column "Nombre", :name
+      column "Monto", :amount
+      column "Descripción", :description
+
+    actions
+  end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -17,6 +25,4 @@ ActiveAdmin.register Pedido do
 #   permitted << :other if resource.something?
 #   permitted
 # end
-
-
 end

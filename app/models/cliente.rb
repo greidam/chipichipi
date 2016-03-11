@@ -1,7 +1,7 @@
 class Cliente < ActiveRecord::Base
 
-  has_many :solicitud
-  has_many :pedido, through: :solicitud
+  has_many :solicituds
+  has_many :pedidos, through: :solicituds
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
