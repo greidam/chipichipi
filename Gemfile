@@ -28,8 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveAdmin
-gem 'activeadmin'
-
+gem 'activeadmin', github: 'activeadmin'
 # Use Devise
 gem 'devise'
 

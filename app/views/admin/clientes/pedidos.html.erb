@@ -1,0 +1,59 @@
+<input name="batch_action_inputs" id="batch_action_inputs" type="hidden">
+<div class="table_tools">
+    <div class="batch_actions_selector dropdown_menu">
+      <a class="disabled dropdown_menu_button" href="#">Batch Actions</a>
+      <div style="display: none;" class="dropdown_menu_list_wrapper"><div class="dropdown_menu_nipple"></div>
+        <ul class=" dropdown_menu_list">
+          <li><a class="batch_action" data-action="destroy" data-confirm="Are you sure you want to delete these pedidos?" data-inputs="null" href="#">Delete Selected</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+<div class="paginated_collection">
+  <div class="paginated_collection_contents">
+    <div class="index_content">
+      <div class="index_as_table">
+        <table id="index_table_pedidos" class="index_table index" paginator="true" border="0" cellpadding="0" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="col col-selectable">
+                <div class="resource_selection_toggle_cell">
+                  <input id="collection_selection_toggle_all" name="collection_selection_toggle_all" class="toggle_all" type="checkbox">
+                </div>
+              </th>
+              <th class="sortable col col-nombre"><a href="/admin/pedidos?order=name_desc">Nombre</a></th>
+              <th class="sortable col col-monto"><a href="/admin/pedidos?order=amount_desc">Monto</a></th>
+              <th class="sortable col col-descripcion"><a href="/admin/pedidos?order=description_desc">Descripción</a></th>
+              <th class="col col-solicitud">Solicitud</th>
+              <th class="col col-estado">Estado</th>
+              <th class="col col-actions"></th>
+            </tr>
+          </thead>
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+      <tr class="odd">
+        <td class="col col-selectable">
+          <div class="resource_selection_cell">
+            <input id="batch_action_item_<%= pedido.id %>" value="<%= pedido.id %>" class="collection_selection" name="collection_selection[]" type="checkbox">
+          </div>
+        </td>
+        <td class="col col-nombre"><%= pedido.name %></td>
+        <td class="col col-monto"><%= pedido.amount %></td>
+        <td class="col col-descripcion"><%= pedido.description %></td>
+        <td class="col col-solicitud"><%= pedido.solicitud.reference %></td>
+          <td class="col col-estado"><%= pedido.estado.title %></td>
+          <td class="col col-actions">
+            <div class="table_actions">
+<%= link_to 'View', admin_pedido_path(pedido) %>  <%= link_to 'Edit', edit_admin_pedido_path(pedido) %>  <%= link_to 'Destroy', admin_pedido_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+                              </div>
+          </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</form>
+</div>
+</div>
+</div>
+<br>
