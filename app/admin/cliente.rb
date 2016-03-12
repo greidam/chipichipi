@@ -13,8 +13,10 @@ ActiveAdmin.register Cliente do
   #   actions
   # end
   #
-  # filter :name
-  # filter :email
+  filter :name
+  filter :email
+  filter :solicituds
+  filter :pedidos
   # filter :current_sign_in_at
   # filter :sign_in_count
   # filter :created_at

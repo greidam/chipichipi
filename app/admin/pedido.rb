@@ -1,7 +1,7 @@
 ActiveAdmin.register Pedido do
   controller do
-      nested_belongs_to :cliente, :solicitud, optional: true
-      belongs_to :estado, optional: true
+    nested_belongs_to :cliente, :solicitud, optional: true
+    belongs_to :estado, optional: true
 
   end
   permit_params :name, :amount, :description, :solicitud_id, :estado_id
@@ -11,6 +11,7 @@ ActiveAdmin.register Pedido do
       column "Nombre", :name
       column "Monto", :amount
       column "Descripción", :description
+      column "Solicitud", :solicitud
         column "Estado", :estado
 
     actions
