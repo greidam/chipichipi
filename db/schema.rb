@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311033225) do
+ActiveRecord::Schema.define(version: 20160312023517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 20160311033225) do
   add_index "clientes", ["email"], name: "index_clientes_on_email", unique: true, using: :btree
   add_index "clientes", ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true, using: :btree
 
+  create_table "estados", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pedidos", force: :cascade do |t|
     t.string   "name"
     t.integer  "amount"
@@ -57,8 +63,10 @@ ActiveRecord::Schema.define(version: 20160311033225) do
     t.integer  "solicitud_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "estado_id"
   end
 
+  add_index "pedidos", ["estado_id"], name: "index_pedidos_on_estado_id", using: :btree
   add_index "pedidos", ["solicitud_id"], name: "index_pedidos_on_solicitud_id", using: :btree
 
   create_table "solicituds", force: :cascade do |t|
@@ -70,4 +78,5 @@ ActiveRecord::Schema.define(version: 20160311033225) do
 
   add_index "solicituds", ["cliente_id"], name: "index_solicituds_on_cliente_id", using: :btree
 
+  add_foreign_key "pedidos", "estados"
 end

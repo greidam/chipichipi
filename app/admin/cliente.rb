@@ -29,7 +29,7 @@ ActiveAdmin.register Cliente do
   end
 
   column "Pedidos", :pedidos_del_cliente do |cliente|
-  link_to cliente.pedidos.size, admin_cliente_pedidos_path(cliente)
+  link_to cliente.pedidos.size,  pedidos_admin_cliente_path(cliente)
 
   end
 
